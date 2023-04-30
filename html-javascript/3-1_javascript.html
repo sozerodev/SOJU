@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript 기초</title>
+    <script defer src="./main.js"></script>
+    <script defer src="./variable.js"></script>
+  </head>
+  <body>
+    <h1>async와 defer의 차이점(ES5)</h1>
+    <div>
+      <p>
+        <li>
+          head안에 script가 있으면 사용자가 html파일을 다운받았을 때 한줄 한줄
+          읽으면서 DOM으로 변환하는데.. <br />
+          html을 파싱하는 것을 잠시 멈추고 필요한 JS를 다운받은 후에 html파싱이
+          시작됨. <br />
+          이때 JS의 용량이 크면 사용자가 웹사이트를 보는데 시간이 오래 걸림.
+          그래서 body의 끝부분에 JS를 넣기도 함. <br />
+          이때 단점은.. 해당 페이지가 JS에 의존도가 높은 경우, 사용자가 의미
+          있는 컨텐츠를 접하려면 정상적인 페이지를 보기까지 시간이 걸릴 수 있음
+        </li>
+        <br />
+        <li>
+          head안에서 js를 부르되, async 속성값을 쓰는 것 html을 파싱하는 중
+          병렬로 js를 불러온다. 이때 파싱이 진행중이기 때문에 JS에서 돔을
+          조작하여 이벤트를 사용하려 할 때 문제가 생길 수 있다.
+        </li>
+        <br />
+        <li>
+          header안에 defer를 써서 js를 다운로드하는 경우(가장 안전) html을
+          파싱하는 동안 필요한 js를 다 다운받고 html을 파싱한 후에 js를
+          실행한다.
+        </li>
+        <br />
+        <li>
+          async로 js를 다수 받을 경우.. 정해진 순서에 상관없이 다운로드가
+          실행되는 순서대로 실행된다. 따라서 js가 순서에 의존한다면 문제가 생길
+          수 있음. 순서를 중요시한다면 defer옵션을 사용하면 된다.
+        </li>
+        <br />
+        따라서 defer를 쓰는 것이 가장 안전하다.
+      </p>
+    </div>
+
+    <h1>use strict 사용!</h1>
+    js파일 상단에 <b>'use strict';</b> 를 사용해주는 것이 좋다. <br />
+    왜냐하면 js는 유연한 만큼 위험할 수 있기 때문에 ECMAScript 5를 통해 문제
+    발생 가능성을 낮추기 때문이다. <br /><br />
+    예를 들면 처음부터 선언되지 않은 변수에 값을 할당하는 경우라든가.
+
+    <h1>const를 사용해야 하는 이유(immutable type)</h1>
+    - security (한번 작성한 값을 해커들이 이상한 코드를 삽입하여 값의 변경을
+    막을 수 있다.) <br />
+    - thread safety <br />
+    - reduce human mistakes <br />
+
+    <h1>Variable types</h1>
+    - 자바스크립트에서 숫자는 -2**53 ~ 2*53 까지만 표현이 됐었음. <br />
+    - 최근에는 <b>bigInt</b> 타입이 추가되어 범위를 초과하더라도 뒤에 <b>n</b>을
+    붙이면 표현이 가능해짐. <br />
+    - 예를들면 123456789012345678901234567890123456789012345678901234567890<b
+      >n</b
+    >
+    - 최근에 추가되었기 때문에 지원 안되는 브라우저도 간혹 있음.
+
+    <h2>boolean</h2>
+    - false: 0, null, undefined, NaN, '' <br />
+    - true: any other value
+
+    <h2>null과 undefined</h2>
+    - null: 그냥 비어있는 것. 아무것도 아닌 것<br />
+    - undefined: 선언은 되었지만 값이 지정되어 있지 않은 경우
+
+    <h2>Symbol</h2>
+    - map이나 다른 자료구조에서 고유한 식별자가 필요한 경우 우선순위를 줄 때
+    사용 - string을 통해 사용하기도 함
+
+    <h1>dynamic typing</h1>
+    - ts를 배워야 하는 이유..
+
+    <h1>hoisting</h1>
+    - 변수를 어디에 선언했는지 상관없이 항상 제일 위로 선언을 끌어올린다.
+  </body>
+</html>
