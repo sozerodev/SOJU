@@ -7,6 +7,7 @@
     <title>javascript 기초</title>
     <script defer src="./main.js"></script>
     <script defer src="./variable.js"></script>
+    <script defer src="./operator.js"></script>
   </head>
   <body>
     <h1>async와 defer의 차이점(ES5)</h1>
@@ -45,19 +46,24 @@
       </p>
     </div>
 
+    <hr />
     <h1>use strict 사용!</h1>
     js파일 상단에 <b>'use strict';</b> 를 사용해주는 것이 좋다. <br />
     왜냐하면 js는 유연한 만큼 위험할 수 있기 때문에 ECMAScript 5를 통해 문제
     발생 가능성을 낮추기 때문이다. <br /><br />
     예를 들면 처음부터 선언되지 않은 변수에 값을 할당하는 경우라든가.
 
-    <h1>const를 사용해야 하는 이유(immutable type)</h1>
+    <hr />
+    <h1>data types</h1>
+    <h2>const를 사용해야 하는 이유(immutable type)</h2>
     - security (한번 작성한 값을 해커들이 이상한 코드를 삽입하여 값의 변경을
     막을 수 있다.) <br />
     - thread safety <br />
     - reduce human mistakes <br />
+    - 따라서 JS에서 변수값이 계속 바껴야 할 이유가 없다면 가급적 const를
+    사용하도록 하자
 
-    <h1>Variable types</h1>
+    <h2>Variable types</h2>
     - 자바스크립트에서 숫자는 -2**53 ~ 2*53 까지만 표현이 됐었음. <br />
     - 최근에는 <b>bigInt</b> 타입이 추가되어 범위를 초과하더라도 뒤에 <b>n</b>을
     붙이면 표현이 가능해짐. <br />
@@ -78,10 +84,80 @@
     - map이나 다른 자료구조에서 고유한 식별자가 필요한 경우 우선순위를 줄 때
     사용 - string을 통해 사용하기도 함
 
-    <h1>dynamic typing</h1>
+    <h2>dynamic typing</h2>
     - ts를 배워야 하는 이유..
 
-    <h1>hoisting</h1>
+    <h2>hoisting</h2>
     - 변수를 어디에 선언했는지 상관없이 항상 제일 위로 선언을 끌어올린다.
+
+    <hr />
+
+    <h1>연산 반복문</h1>
+    <h2>== / === 차이</h2>
+    - ==: loose equality, with type conversion (타입과 관계 없이 0, "", null,
+    undefined는 false로 간주. '5'==5 는 true가 된다.) <br />
+    - ===: strict equality, no type conversion (타입까지도 상관 있다. '5'===5는
+    false가 된다.)
+
+    <h2>do while</h2>
+    <pre>
+
+      <code>
+        do { 
+          console.log(`do while: ${i}`); 
+          i--; 
+        } while(i>0); 
+      </code>
+    </pre>
+
+    <h2>Ternary operator: ?</h2>
+    - contidion ? value1: value2; <br />
+    - 복잡해지면 가독성이 떨어지기 때문에 간단할 때만 사용할 것을 권장
+
+    <hr />
+
+    <h2>spread 연산자 (...) - es6</h2>
+    <pre>
+      <code>
+        //Rest
+        function foo(param, ...rest) {
+          console.log(param); // 1
+          console.log(rest);  // [ 2, 3 ]
+        }
+        foo(1, 2, 3);
+        
+        //Spread호출
+        function bar(x, y, z) {
+          console.log(x); // 1
+          console.log(y); // 2
+          console.log(z); // 3
+        }
+        bar(...[1, 2, 3]);
+      </code>
+    </pre>
+
+    <h1>js에서의 scope</h1>
+    - 밖에서는 안이 보이지 않고, <b> 안에서만 밖을 볼 수 있다. </b>
+
+    <h1>eary return, early exit</h1>
+    - 조건이 맞지 않은 경우 빨리 return하고, 필요한 로직을 그 뒤에 작성한다.
+    <pre><code>
+      // bad
+      function upgradeUser(user){
+        if (user.point > 10) {
+          // long upgrade logic...
+        }
+      }
+
+      // good
+      function upgradeUser(user){
+        if (user.point <= 10) {
+          return;
+        }
+
+        // long upgrade logic...
+      }
+
+    </code></pre>
   </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript 기초</title>
+    <script defer src="./operator.js"></script>
+  </head>
+  <body>
+    <h1>function expression</h1>
+    - function expression: 할당된 다음부터 호출이 가능!
+    <pre><code>
+
+      print(); // 에러 발생. 호이스팅이 불가능하기 때문.
+
+      // anonymous function
+      const print = function () {
+        console.log('print')
+      }
+
+      // named function
+      const print = function print() {
+        console.log('print')
+      }
+    </code></pre>
+    - function declaration: 호이스팅이 가능!
+    <pre><code>
+      print(); // print가 출력됨. 호이스팅이 가능하기 때문. 
+      function print() {
+        console.log('print')
+      }
+    </code></pre>
+
+    <h1>IIFE: Immediately Invoked Function Expression</h1>
+    - 선언과 동시에 호출을 하는 함수 - 최근에 잘 쓰이진 않으나 JS에서 바로
+    호출해서 쓰고싶을 때 사용한다.
+    <pre><code>
+      (function hello() {
+        console.log('IIFE');
+      })();
+    </code></pre>
+
+    <hr />
+
+    <h1>class</h1>
+  </body>
+</html>
