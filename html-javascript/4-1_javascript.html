@@ -8,6 +8,10 @@
   </head>
   <body>
     <h1>DOM, Event</h1>
+    <a
+      href="https://www.youtube.com/playlist?list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S"
+      >참고 영상</a
+    >
 
     <h2>DOM(Document Object Model)</h2>
     - html문서의 각 요소들을 트리 형식으로 표현
@@ -28,16 +32,88 @@
     <h2>반환값의 차이</h2>
     <h3>document.querySelectorAll의 반환값은 NodeList이다.</h3>
     <p>- 한번 저장된 값을 계속 사용한다.</p>
+    <p>- 모든 타입의 노드들</p>
 
     <h3>document.getElementsByTagName의 반환값은 HTMLCollection 이다.</h3>
     <p>- 노드의 변경 사항이 실시간으로 반영된다.</p>
+    <p>- 요소 타입의 노드들</p>
 
     <h3>document.documentElement는 html을 리턴한다.</h3>
     - 이때 document.documentElement.parentNode 는 부모인 노드 중 모든 노드를
     반환한다. 따라서 #document가 반환됨 <br />
-    - document.documentElement.parentElement 부모인 노드 중 요소 노드만을
-    반환한다. 따라서 null이 반환됨
+    - document.documentElement.parentElement 부모인 노드 중 <b>요소 노드</b>만을
+    반환한다. 따라서 null이 반환됨 <br />
+    - <b> 돔으로 접근할 땐 가급적 노드보단 요소로 접근하는 것이 좋다. </b>
 
-    <h2>노드의 생성/추가/복제/삭제</h2>
+    <h2>css style, class제어</h2>
+    - 특정 요소의 클래스를 추가/삭제 를 왔다갔다 하려면 add/remove를 반복하기
+    보다 <b>toggle</b>을 사용하자
+    <pre><code>
+        // bg-red클래스를 뺏다 넣었다 하는 경우
+        setInterval(() => {
+            box.classList.toggle('bg-red');
+        })
+    </code></pre>
+
+    <h2>이벤트 핸들러</h2>
+    <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">참고 사이트</a>
+    <pre><code>
+
+        function sayHello() {
+            alert("Hello");
+        }
+
+        const el = document.getElementById("btn");
+        el.onClick = sayHello;
+
+
+        const el2 = document.getElementById("btn2");
+        // el2.addEventListener("click", sayHello);
+
+        // 다음 방식이 html과 js의 분리가 더 깔끔하게 이뤄진다.
+        el2.addEventListener("click", () => {
+            alert("hi");
+        })
+
+        // 이런 것도 있다.
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.style.backgroundColor = "red";
+        })
+
+        // 이런 것도 있다_2. 이미 할당된 핸들러를 삭제할 때 사용한다. 
+        document.removeEventListener()
+    </code></pre>
+    - "click"이 아닌 "dbclick"의 경우 더블클릭 이벤트 발생 시 트리거된다. -
+
+    <h2>자바스크립트 DOM & EVENT (이벤트 버블링, 이벤트 위임)</h2>
+    - 자식요소에서 발생된 이벤트 객체는 부모와 그 부모를 통해 전파된다. <br />
+    - 즉 하위요소에서 상위 요소로 올라간다. 이를 <b>이벤트 버블링</b>이라고 함
+    <br />
+
+    <h3>버블링 X</h3>
+    <ul>
+      <li>focus</li>
+      <li>blur</li>
+      <li>mouseenter</li>
+      <li>mouseleave</li>
+    </ul>
+
+    <h3>버블링 O</h3>
+    <ul>
+      <li>focusin</li>
+      <li>focusout</li>
+      <li>mouseover</li>
+      <li>mouseout</li>
+    </ul>
+
+    <p>이벤트 버블링은 임의적으로 막을 수 있다.</p>
+    <pre><code>
+        const txt = document.getElementById("txt");
+         
+        txt.addEventListener("focusin", (event) => {
+            event.stopPropagation(); // 임의로 버블링 막기
+            console.log("focusin - 3. input");
+        })
+    </code></pre>
   </body>
 </html>
