@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4-1 javascript</title>
+  </head>
+  <body>
+    <h1>DOM, Event</h1>
+
+    <h2>DOM(Document Object Model)</h2>
+    - html문서의 각 요소들을 트리 형식으로 표현
+    <hr />
+
+    <pre><code>
+        // 첫번째 요소 하나만 나온다.
+        document.querySelector('.클래스값')
+
+        // 해당하는 요소 모두 나온다.
+        document.querySelectorAll('.클래스값')
+    </code></pre>
+    - document.querySelectorAll의 결과는 배열이 아닌 iterable한 객체인
+    <b>NodeList</b> 이다.
+
+    <hr />
+
+    <h2>반환값의 차이</h2>
+    <h3>document.querySelectorAll의 반환값은 NodeList이다.</h3>
+    <p>- 한번 저장된 값을 계속 사용한다.</p>
+
+    <h3>document.getElementsByTagName의 반환값은 HTMLCollection 이다.</h3>
+    <p>- 노드의 변경 사항이 실시간으로 반영된다.</p>
+
+    <h3>document.documentElement는 html을 리턴한다.</h3>
+    - 이때 document.documentElement.parentNode 는 부모인 노드 중 모든 노드를
+    반환한다. 따라서 #document가 반환됨 <br />
+    - document.documentElement.parentElement 부모인 노드 중 요소 노드만을
+    반환한다. 따라서 null이 반환됨
+
+    <h2>노드의 생성/추가/복제/삭제</h2>
+  </body>
+</html>
