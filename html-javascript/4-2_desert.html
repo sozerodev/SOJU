@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>디저트 사이트 만들어보기</title>
+    <script defer src="./desert.js"></script>
+
+    <body>
+      <header>
+        <div>디저트</div>
+      </header>
+      <div id="modalBg" style="display: none">
+        <div class="modal" id="addItemForm">
+          <span class="modal-close" id="closeModal">X</span>
+          <label for="name" class="label">이름</label>
+          <input id="name" type="text" placeholder="한국과자" required="" />
+          <label for="image" class="label">이미지</label>
+          <input id="image" type="text" placeholder="URL" required="" />
+          <label for="content" class="label">내용</label>
+          <input id="content" type="text" placeholder="삼삼한 맛이게~" />
+          <button id="submit">저장</button>
+        </div>
+      </div>
+      <main>
+        <div class="side">
+          <p>
+            <button id="addItemBtn">추가</button>
+          </p>
+          <p>한국 과자</p>
+          <p>일본 과자</p>
+          <p>유럽 과자</p>
+        </div>
+
+        <section>
+          <div class="card">
+            <img src="./images/korea.jpg" alt="한국과자" />
+            <span>삼삼한 맛의 한국과자~</span>
+          </div>
+          <div class="card">
+            <img src="./images/japan.jpeg" alt="일본과자" />
+            <span>달콤한 맛의 일본과자~</span>
+          </div>
+          <div class="card">
+            <img src="./images/europ.jpg" alt="유럽과자" />
+            <span>진짜 달콤한 맛의 유럽과자~</span>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div>
+          <p>
+            contact: sozerodev@gmail.com (<a href="https://github.com/sozerodev"
+              >깃허브</a
+            >)
+          </p>
+        </div>
+      </footer>
+    </body>
+  </head>
+  <body></body>
+</html>
